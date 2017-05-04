@@ -101,6 +101,7 @@ namespace CONTROL_DE_INVENTARIO
                     contador++;
                 }
                 nuevo.siguiente = temp.siguiente;
+                nuevo.anterior = temp;
                 temp.siguiente = nuevo;
             }
         }
