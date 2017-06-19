@@ -20,28 +20,11 @@ namespace CONTROL_DE_INVENTARIO
             }
             else
             {
-                Productos temp = inicio;
-                while (temp != null)
-                    temp = temp.siguiente;
-                if (temp == null)
-                {
-                    nuevo.anterior = ultimo;
-                    ultimo.siguiente = nuevo;
-                    nuevo.siguiente = null;
-                    ultimo = nuevo;
-                }
-                else
-                {
-                    if (temp.anterior == null)
-                        inicio = nuevo;
-                    else
-                        temp.anterior.siguiente = nuevo;
-                    nuevo.anterior = temp.anterior;
-                    temp.anterior = nuevo;
-                    nuevo.siguiente = temp;
-                }
+                ultimo.siguiente = nuevo;
+                nuevo.siguiente = ultimo;
+                ultimo = nuevo;
             }
-        }
+        }            
 
         public Productos Buscar(int codigo)
         {
@@ -102,6 +85,7 @@ namespace CONTROL_DE_INVENTARIO
                 }
                 nuevo.siguiente = temp.siguiente;
                 nuevo.anterior = temp;
+                nuevo.siguiente.anterior = nuevo;
                 temp.siguiente = nuevo;
             }
         }
